@@ -1,0 +1,20 @@
+.row{
+    margin-top:3px;
+    margin-bottom:3px;
+}
+
+#pagetop {
+  text-decoration: none;
+  background: #9cf;
+  border-radius: 5px;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#pagetop:hover {
+  text-decoration: none;
+  background: #f99;
+}

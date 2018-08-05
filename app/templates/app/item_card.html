@@ -1,0 +1,28 @@
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>ID</th>
+      <td>{{ item.id }}</td>
+    </tr>
+    <tr>
+      <th>SERVICE NAME</th>
+      <td>{{ item.service_name }}</td>
+    </tr>
+    <tr>
+      <th>HOST NAME</th>
+      <td>{{ item.host_name }}</td>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <td>{{ item.port }}</td>
+    </tr>
+    <tr>
+      <th>CREATED DATE</th>
+      <td>{{ item.created_at|date:"Y/m/d G:i:s" }}</td>
+    </tr>
+    <tr>
+      <th>UPDATED DATE</th>
+      <td>{{ item.updated_at|date:"Y/m/d G:i:s" }}</td>
+    </tr>
+  </tbody>
+</table>

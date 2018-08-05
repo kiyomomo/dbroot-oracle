@@ -1,0 +1,65 @@
+{% extends "./_base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container">
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Search conditions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="filter" method="get">
+          <div class="modal-body">{{filter.form|crispy}}</div>
+        </form>
+        <div class="modal-footer">
+          <a class="btn btn-outline-secondary" data-dismiss="modal">Back</a>
+          <button type="submit" class="btn btn-outline-secondary" form="filter">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <a class="btn btn-secondary filtered" style="visibility:hidden" href="/?page=1">Cancel search</a>
+      <div class="float-right">
+        <a class="btn btn-outline-secondary" href="{% url 'create' %}">Create</a>
+        <a class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal" href="#">Search</a>
+      </div>
+    </div>
+  </div>
+  <div class="row" >
+    <div class="col-12">{% include "./_pagination.html" %} </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+          <tbody>
+            <tr>
+              <th>ID</th>
+              <th>SERVICE NAME</th>
+              <th>HOST NAME</th>
+              <th>PORT</th>
+              <th style="text-align:center">DETAIL</th>
+            </tr>
+            {% for item in item_list %}
+            <tr>
+              <td>{{ item.id }}</td>
+              <td>{{ item.service_name }}</td>
+              <td>{{ item.host_name }}</td>
+              <td>{{ item.port }}</td>
+              <td style="text-align:center"><a class="btn btn-primary btn-sm" href="{% url 'detail' item.pk %}">Show</a></td>
+            </tr>
+            {% empty %}
+            <li class="list-group-item">No data </li>
+            {% endfor %}
+          </tbody>
+        </table>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

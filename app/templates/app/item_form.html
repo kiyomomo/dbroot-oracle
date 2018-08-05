@@ -1,0 +1,31 @@
+{% extends "./_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{{ form.certifications.errors }}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center">Database registration</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form method="post" id="myform">
+        {%crispy form%}
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="float-left">
+        {% if item.pk %}
+        <a class="btn btn-outline-dark" href="{% url 'detail' item.pk %}">Back</a>
+        {% else %}
+        <a class="btn btn-outline-dark" href="{% url 'index' %}">Back</a>
+        {% endif %}
+        <a class="btn btn-outline-info save" href="#">Save</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

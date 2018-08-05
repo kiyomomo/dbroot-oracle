@@ -1,0 +1,42 @@
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>SERVICE NAME</th>
+      <td>{{ service_name }}</td>
+    </tr>
+    <tr>
+      <th>HOST NAME</th>
+      <td>{{ host_name }}</td>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <td>{{ port }}</td>
+    </tr>
+  </tbody>
+</table>
+<small>
+<table class="table table-bordered table-striped table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th>OWNER</th>
+      <th>TABLE_NAME</th>
+      <th>TABLESPACE_NAME</th>
+      <th>COLUMNS</th>
+      <th>CONSTRAINTS</th>
+      <th>INDEXES</th>
+      <th>INDEX_COLUMNS</th>
+    </tr>
+    {% for r in result %}
+    <tr>
+      <td>{{ r.OWNER }}</td>
+      <td>{{ r.TABLE_NAME }}</td>
+      <td>{{ r.TABLESPACE_NAME }}</td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_table_columns/{{ r.OWNER }}/{{ r.TABLE_NAME }}" name="object_table_columns">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_constraints/{{ r.OWNER }}/{{ r.TABLE_NAME }}" name="object_constraints">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_indexes/{{ r.OWNER }}/{{ r.TABLE_NAME }}" name="object_indexes">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_index_columns/{{ r.OWNER }}/{{ r.TABLE_NAME }}" name="object_index_columns">Show</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</small>

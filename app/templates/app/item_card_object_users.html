@@ -1,0 +1,46 @@
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>SERVICE NAME</th>
+      <td>{{ service_name }}</td>
+    </tr>
+    <tr>
+      <th>HOST NAME</th>
+      <td>{{ host_name }}</td>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <td>{{ port }}</td>
+    </tr>
+  </tbody>
+</table>
+<small>
+<table class="table table-bordered table-striped table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th>USERNAME</th>
+      <th style="text-align:center">TABLES</th>
+      <th style="text-align:center">VIEWS</th>
+      <th style="text-align:center">PROCEDURES</th>
+      <th style="text-align:center">QUEUES</th>
+      <th style="text-align:center">SEQUENCES</th>
+      <th style="text-align:center">SYNONYMS</th>
+      <th style="text-align:center">TAB_PARTITIONS</th>
+      <th style="text-align:center">TRIGGERS</th>
+    </tr>
+    {% for r in result %}
+    <tr>
+      <td>{{ r.USERNAME }}</td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_tables/{{ r.USERNAME }}" name="object_tables">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_views/{{ r.USERNAME }}" name="object_views">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_procedures/{{ r.USERNAME }}" name="object_procedures">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_queues/{{ r.USERNAME }}" name="object_queues">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_sequences/{{ r.USERNAME }}" name="object_sequences">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_synonyms/{{ r.USERNAME }}" name="object_synonyms">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_tab_partitions/{{ r.USERNAME }}" name="object_tab_partitions">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="/detail/{{ id }}/object_triggers/{{ r.USERNAME }}" name="object_triggers">Show</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</small>

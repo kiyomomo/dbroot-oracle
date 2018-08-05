@@ -1,0 +1,26 @@
+{% extends "./_base.html" %}
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <a class="btn btn-outline-primary float-left" href="">Detail</a>
+      <a class="btn btn-outline-primary float-left" href="metrics/">Metrics</a>
+      <a class="btn btn-outline-primary float-left" href="object_users/">Objects</a>
+      <a class="btn btn-outline-primary float-left" href="privileges/">Privileges</a>
+      <a class="btn btn-outline-primary float-left" href="parameter/">Parameter</a>
+      <a class="btn btn-outline-primary float-left" href="instance/">Instance</a>
+      <a class="btn btn-outline-primary float-left" href="database/">database</a>
+      <a class="btn btn-outline-primary float-left" href="v$/">V$</a>
+    </div>
+  </div>
+  <h2 class="text-center">Detail</h2>
+  {% include "./item_card.html" %}
+  <div class="row">
+    <div class="col-12 float-left">
+      <a class="btn btn-outline-dark" href="{% url 'index' %}">Back</a>
+      <a class="btn btn-outline-info" href="{% url 'update' item.pk %}">Update</a>
+      <a class="btn btn-outline-danger" href="{% url 'delete' item.pk %}">Delete</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

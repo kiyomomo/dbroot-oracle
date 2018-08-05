@@ -1,0 +1,8 @@
+{% extends "./_base.html" %}
+{% block content %}
+<div class="container">
+  {% include "./_tab.html" %}
+  <h2 class="text-center">ROLE_PRIVILEGES : {{ params.grantee }}</h2>
+  {% include "./item_card_privileges_role.html" %}
+</div>
+{% endblock %}

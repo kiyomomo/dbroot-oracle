@@ -1,0 +1,34 @@
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>SERVICE NAME</th>
+      <td>{{ service_name }}</td>
+    </tr>
+    <tr>
+      <th>HOST NAME</th>
+      <td>{{ host_name }}</td>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <td>{{ port }}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered table-striped table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th>METRIC_NAME</th>
+      <th>VALUE</th>
+      <th style="text-align:center">MINUTE</th>
+      <th style="text-align:center">HOUR</th>
+    </tr>
+    {% for r in result %}
+    <tr>
+      <td>{{ r.METRIC_NAME }}</td>
+      <td>{{ r.VALUE }}</td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="history/{{ r.METRIC_NAME }}" name="metrics_history">Show</a></td>
+      <td style="text-align:center"><a class="btn btn-primary btn-sm" href="summary/{{ r.METRIC_NAME }}" name="metrics_summary">Show</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

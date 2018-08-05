@@ -1,0 +1,73 @@
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>SERVICE NAME</th>
+      <td>{{ service_name }}</td>
+    </tr>
+    <tr>
+      <th>HOST NAME</th>
+      <td>{{ host_name }}</td>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <td>{{ port }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="container">
+  <canvas id="chart"></canvas>
+  <script>
+$(document).ready(function() {
+  var color, colorSet, ctx, data;
+  colorSet = {
+    blue: 'rgb(54, 162, 235)'
+  };
+  color = Chart.helpers.color;
+  data = {
+    labels: [{% for r in result reversed %}'{{ r.BEGIN_TIME }}', {% endfor %}],
+    datasets: [
+      {
+        backgroundColor: color(colorSet.blue).alpha(0.5).rgbString(),
+        borderColor: colorSet.blue,
+        pointBackgroundColor: colorSet.blue,
+        label: 'VALUE',
+        data: [{% for r in result reversed %}{{ r.VALUE }}, {% endfor %}]
+      }
+    ]
+  };
+  ctx = $('#chart').get(0).getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+      tooltips: {
+        mode: 'index',
+        intersect: false
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      }
+    }
+  });
+});
+  </script>
+</div>
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>BEGIN_TIME</th>
+      <th>END_TIME</th>
+      <th>VALUE</th>
+      <th>METRIC_UNIT</th>
+    </tr>
+    {% for r in result %}
+    <tr>
+      <td>{{ r.BEGIN_TIME }}</td>
+      <td>{{ r.END_TIME }}</td>
+      <td>{{ r.VALUE }}</td>
+      <td>{{ r.METRIC_UNIT }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

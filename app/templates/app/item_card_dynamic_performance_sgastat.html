@@ -1,0 +1,32 @@
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>SERVICE NAME</th>
+      <td>{{ service_name }}</td>
+    </tr>
+    <tr>
+      <th>HOST NAME</th>
+      <td>{{ host_name }}</td>
+    </tr>
+    <tr>
+      <th>PORT</th>
+      <td>{{ port }}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout:fixed">
+  <tbody>
+    <tr>
+      <th>POOL</th>
+      <th>NAME</th>
+      <th>BYTES</th>
+    </tr>
+    {% for r in result %}
+    <tr>
+      <td>{{ r.POOL }}</td>
+      <td>{{ r.NAME }}</td>
+      <td>{{ r.BYTES }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
